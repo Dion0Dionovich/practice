@@ -10,6 +10,7 @@ android {
         version = release(36)
     }
 
+
     defaultConfig {
         applicationId = "com.example.practice"
         minSdk = 24
@@ -17,6 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:5056/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
