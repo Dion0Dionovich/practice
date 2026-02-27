@@ -121,9 +121,12 @@ class MainActivity : ComponentActivity() {
         LaunchedEffect(Unit) {
             loadingData = true
             try {
+                val unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient()
+
                 val retrofit = Retrofit.Builder()
                     .baseUrl("http://10.0.2.2:5053/")
                     .addConverterFactory(GsonConverterFactory.create())
+                    .client(unsafeOkHttpClient)
                     .build()
 
                 val api = retrofit.create(TaxiApiService::class.java)
@@ -275,18 +278,18 @@ class MainActivity : ComponentActivity() {
                                 selectedDriver = driversList.random()
                                 showSearching = false
                                 showDriver = true
-                                dialogTitle = "Успех"
-                                dialogMessage = "Водитель найден!"
-                                showMessageDialog = true
+//                                dialogTitle = "Успех"
+//                                dialogMessage = "Водитель найден!"
+//                                showMessageDialog = true
                             }
 
-                            dialogTitle = "Информация"
-                            dialogMessage = "Ищем водителя..."
-                            showMessageDialog = true
+//                            dialogTitle = "Информация"
+//                            dialogMessage = "Ищем водителя..."
+//                            showMessageDialog = true
                         } else {
-                            dialogTitle = "Ошибка"
-                            dialogMessage = "Заполните адреса"
-                            showMessageDialog = true
+//                            dialogTitle = "Ошибка"
+//                            dialogMessage = "Заполните адреса"
+//                            showMessageDialog = true
                         }
                     },
                     tariffs = tariffs,
